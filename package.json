@@ -1,0 +1,17 @@
+{
+  "name": "moten",
+  "version": "1.0.0",
+  "description": "moten, a low code platform",
+  "main": "index.js",
+  "scripts": {
+    "ui": "pnpm -F @moten/ui dev"
+  },
+  "keywords": [
+    "low code",
+    "vue",
+    "vite",
+    "monorepo"
+  ],
+  "author": "blkcor",
+  "license": "ISC"
+}

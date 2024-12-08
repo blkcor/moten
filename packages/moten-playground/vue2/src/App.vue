@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import moten from '@moten/ui'
+import moten from '@moten/ui/moten-vue2'
 const { MoImage } = moten
 export default {
   name: 'App',

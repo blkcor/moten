@@ -3,9 +3,23 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "./dist/moten.umd.cjs",
-  "module": "./dist/moten.js",
+  "main": "./dist/moten-vue3/moten.umd.cjs",
+  "module": "./dist/moten-vue3/moten.js",
   "style": "./dist/moten.css",
+  "exports": {
+    ".": {
+      "import": "./dist/moten-vue3/moten.js",
+      "require": "./dist/moten-vue3/moten.umd.cjs"
+    },
+    "./moten-vue2": {
+      "import": "./dist/moten-vue2/moten.js",
+      "require": "./dist/moten-vue2/moten.umd.cjs"
+    },
+    "./moten-vue2/style": {
+      "import": "./dist/moten-vue2/moten.css",
+      "require": "./dist/moten-vue2/moten.css"
+    }
+  },
   "scripts": {
     "build": "pnpm build:vue2 && pnpm build:vue3",
     "build:vue2": "pnpm switch:vue2 && vue-tsc -b && vite build",

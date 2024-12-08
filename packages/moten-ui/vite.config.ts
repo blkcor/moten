@@ -8,6 +8,9 @@ const name = isVue2 ? 'moten-vue2' : 'moten-vue3'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [isVue2 ? createVuePlugin() : vue()],
+  optimizeDeps: {
+    exclude: ['vue-demi'],
+  },
   build: {
     outDir: `dist/${name}`,
     lib: {

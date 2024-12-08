@@ -7,8 +7,6 @@
   "module": "./dist/moten.js",
   "style": "./dist/moten.css",
   "scripts": {
-    "dev": "vite",
-    "preview": "vite preview",
     "build": "pnpm build:vue2 && pnpm build:vue3",
     "build:vue2": "pnpm switch:vue2 && vue-tsc -b && vite build",
     "build:vue3": "pnpm switch:vue3 && vue-tsc -b && vite build",

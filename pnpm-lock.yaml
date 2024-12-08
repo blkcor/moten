@@ -4,6 +4,8 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+packageExtensionsChecksum: 40b469993f07a7d557bd17742914a7df
+
 importers:
 
   .:
@@ -11,10 +13,6 @@ importers:
       rimraf:
         specifier: ^6.0.1
         version: 6.0.1
-    dependenciesMeta:
-      vue-template-compiler:
-        devDependencies:
-          vue: ^2.7.16
 
   packages/moten-playground/vue2:
     dependencies:

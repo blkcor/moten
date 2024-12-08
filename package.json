@@ -4,7 +4,6 @@
   "description": "moten, a low code platform",
   "main": "index.js",
   "scripts": {
-    "ui": "pnpm -F @moten/ui dev",
     "clean": "rimraf --glob ./node_modules ./packages/**/node_modules ./packages/**/dist "
   },
   "keywords": [
@@ -15,14 +14,16 @@
   ],
   "author": "blkcor",
   "license": "ISC",
-  "dependenciesMeta": {
-    "vue-template-compiler": {
-      "devDependencies": {
-        "vue": "^2.7.16"
-      }
-    }
-  },
   "devDependencies": {
     "rimraf": "^6.0.1"
+  },
+  "pnpm": {
+    "packageExtensions": {
+      "vue-template-compiler": {
+        "devDependencies": {
+          "vue": "^2.7.16"
+        }
+      }
+    }
   }
 }

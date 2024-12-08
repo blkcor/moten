@@ -4,7 +4,8 @@
   "description": "moten, a low code platform",
   "main": "index.js",
   "scripts": {
-    "ui": "pnpm -F @moten/ui dev"
+    "ui": "pnpm -F @moten/ui dev",
+    "clean": "rimraf --glob ./node_modules ./packages/**/node_modules ./packages/**/dist "
   },
   "keywords": [
     "low code",
@@ -20,5 +21,8 @@
         "vue": "^2.7.16"
       }
     }
+  },
+  "devDependencies": {
+    "rimraf": "^6.0.1"
   }
 }

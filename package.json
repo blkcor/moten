@@ -21,7 +21,7 @@
   "pnpm": {
     "packageExtensions": {
       "vue-template-compiler": {
-        "dependencies": {
+        "peerDependencies": {
           "vue": "^2.7.16"
         }
       }

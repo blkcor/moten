@@ -4,6 +4,7 @@
 
 <script>
 import moten from '@moten/ui/moten-vue2'
+import '@moten/ui/moten-vue2/style'
 const { MoImage } = moten
 export default {
   name: 'App',

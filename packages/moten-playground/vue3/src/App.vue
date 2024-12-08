@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import moten from "@moten/ui";
+import "@moten/ui/style";
 const { MoImage } = moten;
 </script>
 

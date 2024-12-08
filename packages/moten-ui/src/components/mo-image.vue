@@ -1,5 +1,5 @@
 <template>
-  <img :src="src" />
+  <img class="image" :src="src" />
 </template>
 
 <script lang="ts">
@@ -29,4 +29,9 @@ export default defineComponent({
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+.image {
+  width: 500px;
+  height: 300px;
+}
+</style>

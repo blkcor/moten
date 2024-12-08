@@ -23,5 +23,15 @@ export default defineConfig({
       name: 'moten',
       fileName: 'moten',
     },
+    rollupOptions: {
+      external: ['vue', 'vue-demi'],
+      output: {
+        globals: {
+          // Provide global variable names to replace your external imports
+          vue: 'Vue',
+          'vue-demi': 'VueDemi',
+        },
+      },
+    },
   },
 })

@@ -3,9 +3,18 @@
   "version": "1.0.0",
   "description": "moten, a low code platform",
   "main": "index.js",
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "pnpm": ">=7",
+    "node": ">=18"
+  },
   "scripts": {
-    "clean": "rimraf --glob ./node_modules ./pnpm-lock.yaml ./packages/**/node_modules ./packages/**/dist",
-    "clean:install": "pnpm clean && pnpm install -r"
+    "preinstall": "npx only-allow pnpm",
+    "in": "pnpm install -r",
+    "ui:build": "pnpm -F @moten/ui build",
+    "play:vue2": "pnpm -F @moten/ui build:vue2 && pnpm -F @moten/playground-vue2 dev",
+    "play:vue3": "pnpm -F @moten/ui build:vue3 && pnpm -F @moten/playground-vue3 dev",
+    "clear": "rimraf --glob ./node_modules ./pnpm-lock.yaml ./packages/**/node_modules ./packages/**/dist"
   },
   "keywords": [
     "low code",

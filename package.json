@@ -4,7 +4,8 @@
   "description": "moten, a low code platform",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf --glob ./node_modules ./packages/**/node_modules ./packages/**/dist "
+    "clean": "rimraf --glob ./node_modules ./pnpm-lock.yaml ./packages/**/node_modules ./packages/**/dist",
+    "clean:install": "pnpm clean && pnpm install -r"
   },
   "keywords": [
     "low code",
@@ -20,7 +21,7 @@
   "pnpm": {
     "packageExtensions": {
       "vue-template-compiler": {
-        "devDependencies": {
+        "dependencies": {
           "vue": "^2.7.16"
         }
       }

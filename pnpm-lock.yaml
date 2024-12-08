@@ -4,7 +4,7 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-packageExtensionsChecksum: 40b469993f07a7d557bd17742914a7df
+packageExtensionsChecksum: b87ed083d21297fc2d48ab0a899fd2cf
 
 importers:
 
@@ -10093,6 +10093,7 @@ snapshots:
     dependencies:
       de-indent: 1.0.2
       he: 1.2.0
+      vue: 2.7.16
 
   vue-template-es2015-compiler@1.9.1: {}
 

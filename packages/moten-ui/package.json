@@ -3,19 +3,40 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "main": "./dist/moten.umd.cjs",
+  "module": "./dist/moten.js",
+  "style": "./dist/moten.css",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build": "pnpm build:vue2 && pnpm build:vue3",
+    "build:vue2": "pnpm switch:vue2 && vue-tsc -b && vite build",
+    "build:vue3": "pnpm switch:vue3 && vue-tsc -b && vite build",
+    "switch:vue2": "vue-demi-switch 2 vue2",
+    "switch:vue3": "vue-demi-switch 3 vue3"
+  },
+  "peerDependencies": {
+    "@vue/composition-api": "^1.7.2",
+    "vue": "^2.0.0 || >=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
   },
   "dependencies": {
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "vue-demi": "^0.14.10",
+    "vue2": "npm:vue@~2.6.14",
+    "vue2.7": "npm:vue@~2.7.16",
+    "vue3": "npm:vue@~3"
   },
   "devDependencies": {
     "@types/node": "^22.10.1",
     "@vitejs/plugin-vue": "^5.2.1",
     "typescript": "~5.6.2",
     "vite": "^6.0.1",
+    "vite-plugin-vue2": "^2.0.3",
     "vue-tsc": "^2.1.10"
   }
 }

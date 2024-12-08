@@ -13,5 +13,12 @@
     "monorepo"
   ],
   "author": "blkcor",
-  "license": "ISC"
+  "license": "ISC",
+  "dependenciesMeta": {
+    "vue-template-compiler": {
+      "devDependencies": {
+        "vue": "^2.7.16"
+      }
+    }
+  }
 }

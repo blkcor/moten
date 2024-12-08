@@ -7,6 +7,11 @@ import { isVue2 } from 'vue-demi'
 const name = isVue2 ? 'moten-vue2' : 'moten-vue3'
 // https://vite.dev/config/
 export default defineConfig({
+  resolve: {
+    alias: {
+      vue: isVue2 ? 'vue2' : 'vue3',
+    },
+  },
   plugins: [isVue2 ? createVuePlugin() : vue()],
   optimizeDeps: {
     exclude: ['vue-demi'],

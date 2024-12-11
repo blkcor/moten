@@ -8,13 +8,16 @@
     "pnpm": ">=7",
     "node": ">=18"
   },
+  "type": "module",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "in": "pnpm install -r",
     "ui:build": "pnpm -F @moten/ui build",
     "play:vue2": "pnpm -F @moten/ui build:vue2 && pnpm -F @moten/playground-vue2 dev",
     "play:vue3": "pnpm -F @moten/ui build:vue3 && pnpm -F @moten/playground-vue3 dev",
-    "clear": "rimraf --glob ./node_modules ./pnpm-lock.yaml ./packages/**/node_modules ./packages/**/dist"
+    "clear": "rimraf --glob ./node_modules ./pnpm-lock.yaml ./packages/**/node_modules ./packages/**/dist",
+    "prepare": "husky",
+    "commit": "pnpm exec cz"
   },
   "keywords": [
     "low code",
@@ -25,6 +28,11 @@
   "author": "blkcor",
   "license": "ISC",
   "devDependencies": {
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
+    "cz-vinyl": "^2.5.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.11",
     "rimraf": "^6.0.1"
   },
   "pnpm": {
@@ -35,5 +43,8 @@
         }
       }
     }
+  },
+  "dependencies": {
+    "commitizen": "^4.3.1"
   }
 }

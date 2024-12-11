@@ -21,9 +21,9 @@ export default defineComponent({
   mounted() {
     console.log('hello moten image111')
   },
-  setup(props) {
+  setup() {
     return {
-      src: props.src,
+      //  src:props.src
     }
   },
 })

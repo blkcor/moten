@@ -1,5 +1,8 @@
 <template>
-  <img class="image" :src="src" />
+  <div>
+    <h1 class="text-red-200 text-3xl">标题</h1>
+    <img class="image" :src="src" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -15,8 +18,8 @@ export default defineComponent({
   props: {
     src: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
   mounted() {
     console.log('hello moten image111')
@@ -25,7 +28,7 @@ export default defineComponent({
     return {
       //  src:props.src
     }
-  },
+  }
 })
 </script>
 

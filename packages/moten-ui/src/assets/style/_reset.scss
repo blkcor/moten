@@ -1,0 +1,26 @@
+.moten-ui {
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  a {
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    -webkit-text-decoration-skip: objects;
+
+    &:active,
+    &::hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+}

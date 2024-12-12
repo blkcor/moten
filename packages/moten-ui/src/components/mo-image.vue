@@ -32,7 +32,7 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .image {
   width: 500px;
   height: 300px;

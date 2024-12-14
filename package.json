@@ -12,6 +12,7 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "in": "pnpm install -r",
+    "dev": "pnpm -F @moten/editor dev",
     "ui:build": "pnpm -F @moten/ui build",
     "play:vue2": "pnpm -F @moten/ui build:vue2 && pnpm -F @moten/playground-vue2 dev",
     "play:vue3": "pnpm -F @moten/ui build:vue3 && pnpm -F @moten/playground-vue3 dev",

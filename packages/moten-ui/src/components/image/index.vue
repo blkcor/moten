@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-red-200 text-3xl">标题</h1>
+    <h1 class="text-red-200 text-sm">标题</h1>
     <img class="image" :src="src" />
   </div>
 </template>

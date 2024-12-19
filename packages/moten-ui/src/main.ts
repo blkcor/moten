@@ -1,5 +1,5 @@
 import '@/assets/style/index.scss'
-
+import './index.css'
 import imageSchema from '@/components/image/schema'
 import { schemaAllViewport as _schemaAllViewport } from '@/utils/components'
 import MoImage from '@/components/image'

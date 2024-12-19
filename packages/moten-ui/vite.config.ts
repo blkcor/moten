@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import { createVuePlugin } from 'vite-plugin-vue2'
 import { resolve } from 'path'
 import { isVue2 } from 'vue-demi'
+import dts from 'vite-plugin-dts'
 
 const name = isVue2 ? 'moten-vue2' : 'moten-vue3'
 // https://vite.dev/config/
@@ -10,18 +11,19 @@ export default defineConfig({
   resolve: {
     alias: {
       vue: isVue2 ? 'vue2' : 'vue3',
-    },
+      '@': resolve(__dirname, 'src')
+    }
   },
-  plugins: [isVue2 ? createVuePlugin() : vue()],
+  plugins: [isVue2 ? createVuePlugin() : vue(), dts({ tsconfigPath: './tsconfig.app.json' })],
   optimizeDeps: {
-    exclude: ['vue-demi'],
+    exclude: ['vue-demi']
   },
   build: {
     outDir: `dist/${name}`,
     lib: {
       entry: resolve(__dirname, 'src/main.ts'),
       name: 'moten',
-      fileName: 'moten',
+      fileName: 'moten'
     },
     rollupOptions: {
       external: ['vue', 'vue-demi'],
@@ -29,9 +31,9 @@ export default defineConfig({
         globals: {
           // Provide global variable names to replace your external imports
           vue: 'Vue',
-          'vue-demi': 'VueDemi',
-        },
-      },
-    },
-  },
+          'vue-demi': 'VueDemi'
+        }
+      }
+    }
+  }
 })

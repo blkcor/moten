@@ -12,13 +12,16 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "in": "pnpm install -r",
-    "dev": "pnpm -F @moten/editor dev",
+    "dev": "node ./scripts/dev.js",
+    "editor": "pnpm -F @moten/editor dev",
+    "ui": "pnpm -F @moten/ui dev",
     "ui:build": "pnpm -F @moten/ui build",
     "play:vue2": "pnpm -F @moten/ui build:vue2 && pnpm -F @moten/playground-vue2 dev",
     "play:vue3": "pnpm -F @moten/ui build:vue3 && pnpm -F @moten/playground-vue3 dev",
     "clear": "rimraf --glob ./node_modules ./pnpm-lock.yaml ./packages/**/node_modules ./packages/**/dist",
     "prepare": "husky",
-    "commit": "pnpm exec cz"
+    "commit": "pnpm exec cz",
+    "lint": "node ./scripts/lint.js"
   },
   "keywords": [
     "low code",
@@ -47,6 +50,7 @@
   },
   "dependencies": {
     "@iconify/vue": "^4.2.0",
-    "commitizen": "^4.3.1"
+    "commitizen": "^4.3.1",
+    "zx": "^8.2.4"
   }
 }

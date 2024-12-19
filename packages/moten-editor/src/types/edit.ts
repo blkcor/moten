@@ -33,3 +33,5 @@ export interface BaseBlock {
   // formData?: Partial<BlockSchemaFormData[keyof BlockSchemaFormData]>
   formData?: any
 }
+
+export type BaseBlockNull = BaseBlock | null

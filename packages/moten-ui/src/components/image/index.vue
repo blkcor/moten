@@ -1,13 +1,33 @@
 <template>
   <div>
-  image
+    <h1 class="text-red-200 text-3xl">标题</h1>
+    <img class="image" :src="src" />
   </div>
 </template>
+<script lang="ts">
+import { defineComponent } from 'vue-demi'
 
-<script setup lang="ts">
-
+export default defineComponent({
+  name: 'mo-image',
+  props: {
+    src: {
+      type: String,
+      required: true
+    }
+  },
+  mounted() {
+    console.log('hello moten image111')
+  },
+  setup() {
+    return {
+      //  src:props.src
+    }
+  }
+})
 </script>
-
-<style scoped>
-
+<style scoped lang="scss">
+.image {
+  width: 500px;
+  height: 300px;
+}
 </style>

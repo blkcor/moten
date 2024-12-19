@@ -20,7 +20,6 @@
 </template>
 
 <script setup lang="ts">
-import draggable from 'vuedraggable'
 import { clone, move } from './nested'
 import VIcon from '@/components/base/v-icon.vue'
 

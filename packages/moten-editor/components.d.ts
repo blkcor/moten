@@ -8,8 +8,11 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Block: typeof import('./src/components/edit/block.vue')['default']
+    BlockDrag: typeof import('./src/components/edit/block-drag.vue')['default']
     Config: typeof import('./src/components/edit/config.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElCollapse: typeof import('element-plus/es')['ElCollapse']
+    ElCollapseItem: typeof import('element-plus/es')['ElCollapseItem']
     ElOption: typeof import('element-plus/es')['ElOption']
     ElSelect: typeof import('element-plus/es')['ElSelect']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
@@ -18,6 +21,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     VIcon: typeof import('./src/components/base/v-icon.vue')['default']
+    VIconTooltip: typeof import('./src/components/base/v-icon-tooltip.vue')['default']
     VSelect: typeof import('./src/components/base/v-select.vue')['default']
   }
 }

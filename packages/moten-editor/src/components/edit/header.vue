@@ -2,17 +2,23 @@
   <div class="header">
     <div class="header-left">
       <div class="back">
-        <div class="return">
-          <v-icon :src="icon.return" content="返回" />
-        </div>
+        <v-icon-tooltip content="返回" icon="back" />
         <div class="header-title">页面</div>
       </div>
+
       <div class="line"></div>
-      <v-select v-model="viewpoint" />
+
+      <v-select v-model="viewport" />
     </div>
     <div class="header-right">
-      <el-button>预览<v-icon content="预览" :src="icon.preview" /></el-button>
-      <el-button type="primary">发布<v-icon content="发布" :src="icon.publish" /></el-button>
+      <el-button>
+        <v-icon icon="preview" />
+        预览
+      </el-button>
+      <el-button type="primary">
+        <v-icon icon="publish" />
+        发布
+      </el-button>
     </div>
   </div>
 </template>
@@ -21,54 +27,51 @@
 import type { Viewport } from '@/types/edit'
 import { ref } from 'vue'
 import VIcon from '@/components/base/v-icon.vue'
+import VIconTooltip from '@/components/base/v-icon-tooltip.vue'
 import VSelect from '@/components/base/v-select.vue'
-import icon from '@/config/icon'
 
-const viewpoint = ref<Viewport>('desktop')
+const viewport = ref<Viewport>('desktop')
 </script>
 
 <style scoped lang="scss">
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 500;
+  height: var(--edit-header-height);
+  background: white;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 1em 1em;
-  font-size: large;
-  border-bottom: 1px solid #cacacc;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   .header-left {
     display: flex;
     align-items: center;
-    gap: 15px;
+    justify-content: flex-start;
     .back {
       display: flex;
-      justify-content: center;
       align-items: center;
       height: 100%;
-      gap: 5px;
-      .return {
-        text-align: center;
-        padding: 0.3em;
-        box-sizing: content-box;
-        &:hover {
-          background: #bab8b8;
-          cursor: pointer;
-          border-radius: 30%;
-        }
-      }
+      padding: 0 16px;
+      flex-shrink: 0;
       .header-title {
-        font-weight: 600;
+        font-size: 14px;
+        padding-left: 4px;
       }
     }
-
     .line {
-      display: inline;
-      border-left: 2px solid #8f8e8e;
-      height: 70%;
+      width: 1px;
+      height: 20px;
+      border-left: 1px solid var(--color-border);
+      padding-right: 16px;
     }
   }
-
   .header-right {
-    display: flex;
+    position: relative;
+    padding-right: 16px;
   }
 }
 </style>

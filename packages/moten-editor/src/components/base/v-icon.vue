@@ -1,31 +1,22 @@
 <template>
-  <div class="icon">
-    <el-tooltip :content="content" class-name="tip" effect="dark" :placement="placement">
-      <div class="image-box">
-        <Icon v-if="src" :icon="src" class="image" />
-        <slot v-else class="image" />
-      </div>
-    </el-tooltip>
-  </div>
+  <Icon :icon="iconSrc" />
 </template>
 
-<script setup lang="ts">
-import { defineProps } from 'vue'
+<script lang="ts" setup>
+import iconConfig, { type ConfigIcon } from '@/config/icon'
+import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 
-defineProps({
-  src: {
-    type: String,
-    default: ''
-  },
-  content: {
-    type: String
-  },
-  placement: {
+const props = defineProps({
+  icon: {
     type: String,
     default: ''
   }
 })
+
+const iconSrc = computed(() => {
+  return iconConfig[props.icon as ConfigIcon]
+})
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped></style>

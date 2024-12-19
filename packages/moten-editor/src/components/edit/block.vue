@@ -14,8 +14,20 @@
     </div>
     <div class="right">
       <el-collapse v-model="activeNames" @change="handleChange">
-        <el-collapse-item title="基础组件" name="1"> </el-collapse-item>
-        <el-collapse-item title="高级组件" name="2"> </el-collapse-item>
+        <el-collapse-item title="基础组件" name="1">
+          <edit-block-drag
+            :list="baseBlockList"
+            :sort="false"
+            :group="{ name: dragGroup, pull: 'clone', put: false }"
+          />
+        </el-collapse-item>
+        <el-collapse-item title="高级组件" name="2">
+          <edit-block-drag
+            :list="seniorBlockList"
+            :sort="false"
+            :group="{ name: dragGroup, pull: 'clone', put: false }"
+          />
+        </el-collapse-item>
       </el-collapse>
     </div>
   </div>
@@ -26,6 +38,8 @@ import { ref } from 'vue'
 import VIcon from '../base/v-icon.vue'
 
 import { baseBlocks, seniorBlocks } from '@/config/block'
+import EditBlockDrag from '@/components/edit/block-drag.vue'
+import { dragGroup } from './nested'
 
 const menuList = ref([
   {

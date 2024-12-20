@@ -1,5 +1,7 @@
 <template>
-  <component :is="tag" :class="classes" v-bind="$attrs" :to="to" :href="to" :target="target" />
+  <component :is="tag" :class="classes" v-bind="$attrs" :to="to" :href="to" :target="target">
+    <slot />
+  </component>
 </template>
 <script lang="ts">
 import { createNameSpace } from '@/utils/components'

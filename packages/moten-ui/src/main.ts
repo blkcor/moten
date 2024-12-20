@@ -1,3 +1,4 @@
+import { COMPONENT_PREFIX as COMPONENT_PREFIX_ } from './config/index'
 import '@/assets/style/index.scss'
 import './index.css'
 import imageSchema from '@/components/image/schema'
@@ -14,12 +15,12 @@ const components = [MoImage]
 
 function install(app: App) {
   components.forEach((component) => {
-    console.log(component.name)
     const { name } = component
     if (name) app.component(name, component)
   })
 }
 
-export default { install, MoImage }
+export default { install }
 
 export const schemaAllViewport = _schemaAllViewport
+export const COMPONENT_PREFIX = COMPONENT_PREFIX_

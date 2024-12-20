@@ -18,6 +18,13 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['vue-demi']
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "@/assets/style/resources.scss" as *;`
+      }
+    }
+  },
   build: {
     outDir: `dist/${name}`,
     lib: {

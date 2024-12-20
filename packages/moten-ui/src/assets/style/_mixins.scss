@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 // mobile
 @mixin mb {
   @media (max-width: 1023.9px) {
@@ -24,9 +26,9 @@
 }
 
 @mixin res($property, $mobile: null, $pc: null) {
-  $pcValue: if(unitless($pc), #{$pc}px, $pc);
-  $mobileValue: if(unitless($mobile), vw($mobile), $mobile);
-  $mobileContainerValue: if(unitless($mobile), #{$mobile}px, $mobile);
+  $pcValue: if(math.is-unitless($pc), #{$pc}px, $pc);
+  $mobileValue: if(math.is-unitless($mobile), vw($mobile), $mobile);
+  $mobileContainerValue: if(math.is-unitless($mobile), #{$mobile}px, $mobile);
 
   @if(exists($pc)) {
     @include pc {

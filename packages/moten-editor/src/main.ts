@@ -5,6 +5,7 @@ import router from './router'
 import { createPinia } from 'pinia'
 import { Icon } from '@iconify/vue'
 import '@/assets/main.scss'
+import '@moten/ui/style'
 import moten from '@moten/ui'
 
 export const pinia = createPinia()

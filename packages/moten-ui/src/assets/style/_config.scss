@@ -1,0 +1,9 @@
+$namespace :'mo';
+
+@mixin b($block) {
+  $B : $namespace + "-" + $block;
+
+  .#{$B} {
+    @content;
+  }
+}

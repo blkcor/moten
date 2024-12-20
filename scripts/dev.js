@@ -23,6 +23,10 @@ function ex(cmd, callback) {
     }
     console.log(data)
   })
+
+  child.stderr.on('data', (data) => {
+    console.error(data)
+  })
 }
 
 let firstUIBuild = true

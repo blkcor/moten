@@ -19,6 +19,7 @@
           <component
             :is="renderComponentCode(element)"
             :data="element.formData"
+            :children="element.children"
             :viewport="edit.viewport"
           />
         </div>

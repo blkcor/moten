@@ -1,4 +1,4 @@
-@use './styles/base/animate';
-@use './styles/base/reset';
-@use './styles/mixins/index';
-@use './styles/variables/color';
+@forward './styles/base/animate';
+@forward './styles/base/reset';
+@forward './styles/mixins/index';
+@forward './styles/variables/color';

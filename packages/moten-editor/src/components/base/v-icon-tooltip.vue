@@ -1,5 +1,5 @@
 <template>
-  <div class="icon">
+  <div class="icon" @click="handleIconClick">
     <el-tooltip class="tip" effect="dark" :content="content" :placement="placement" :hide-after="0">
       <div class="image-box">
         <v-icon v-if="icon" class="image" :icon="icon" />
@@ -25,6 +25,12 @@ defineProps({
     default: 'bottom'
   }
 })
+
+const emits = defineEmits(['switch'])
+
+const handleIconClick = () => {
+  emits('switch')
+}
 </script>
 
 <style lang="scss" scoped>

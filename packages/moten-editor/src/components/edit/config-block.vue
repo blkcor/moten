@@ -19,8 +19,9 @@ import EditConfigRender from './config-render.vue'
 import { type BlockSchemaKeys, blockSchema } from '@/config/schema'
 import { findNodeById } from './nested'
 import deepmerge from 'deepmerge'
+import type { BaseBlock } from '@/types/edit'
 const edit = useEditStore()
-const list = ref<any[]>([])
+const list = ref<BaseBlock[]>([])
 
 const callback = (params: { data: object; id: string }) => {
   const { data, id } = params
@@ -63,4 +64,8 @@ watch(
 )
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.edit-config-block {
+  width: 100%;
+}
+</style>

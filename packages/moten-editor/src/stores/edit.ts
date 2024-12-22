@@ -1,3 +1,4 @@
+import type { PageSchemaFormData } from '@/config/schema'
 import type { BaseBlock, BaseBlockNull, Viewport } from '@/types/edit'
 import { defineStore } from 'pinia'
 
@@ -5,6 +6,7 @@ export const useEditStore = defineStore('edit', {
   state: () => ({
     viewport: 'desktop' as Viewport,
     blockConfig: [] as BaseBlock[],
+    pageConfig: {} as PageSchemaFormData,
     currentSelect: null as BaseBlockNull,
     configPanelShow: false
   }),
@@ -20,6 +22,9 @@ export const useEditStore = defineStore('edit', {
     },
     setBlockConfig(config: BaseBlock[]) {
       this.blockConfig = config
+    },
+    setPageConfig(config: PageSchemaFormData) {
+      this.pageConfig = config
     }
   },
   getters: {

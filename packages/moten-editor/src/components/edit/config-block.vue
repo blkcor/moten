@@ -32,6 +32,10 @@ const callback = (params: { data: object; id: string }) => {
     array[index].formData = deepmerge(node.formData, data, { arrayMerge: overwriteMerge })
   })
   edit.setBlockConfig(newBlockConfig)
+  if (edit.currentSelect?.id === id) {
+    const fd = deepmerge.all([edit.currentSelect.formData || {}, data])
+    edit.setCurrentSelect({ ...edit.currentSelect, formData: fd })
+  }
 }
 
 watch(

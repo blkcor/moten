@@ -28,7 +28,7 @@ const props = defineProps({
 const emits = defineEmits(['callback'])
 
 const { data } = toRefs(props)
-const { formData, parentKey, key, id } = data.value
+const { formData, key, id } = data.value
 const { title, placeholder, default: defaultValue } = data.value.properties[edit.viewport]
 
 watch(

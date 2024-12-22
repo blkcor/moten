@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="right">
-      <el-collapse v-model="activeNames" @change="handleChange">
+      <el-collapse v-model="activeNames">
         <el-collapse-item title="基础组件" name="1">
           <edit-block-drag
             :list="baseBlockList"
@@ -59,10 +59,6 @@ const activeNames = ref(['1', '2'])
 
 const baseBlockList = ref(baseBlocks)
 const seniorBlockList = ref(seniorBlocks)
-
-const handleChange = () => {
-  console.log('change')
-}
 </script>
 
 <style scoped lang="scss">

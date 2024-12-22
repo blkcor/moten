@@ -1,4 +1,4 @@
-// import type { BlockSchemaFormData, PageSchemaFormData } from '@/config/schema'
+import type { BlockSchemaFormData } from '@/config/schema'
 
 export type Viewport = 'mobile' | 'desktop'
 
@@ -30,8 +30,7 @@ export interface BaseBlock {
   /**
    * 配置内容
    */
-  // formData?: Partial<BlockSchemaFormData[keyof BlockSchemaFormData]>
-  formData?: any
+  formData?: Partial<BlockSchemaFormData[keyof BlockSchemaFormData]>
 }
 
 export type BaseBlockNull = BaseBlock | null

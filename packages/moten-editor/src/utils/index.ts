@@ -1,4 +1,5 @@
 import { customAlphabet } from 'nanoid'
+import { defineAsyncComponent, markRaw, type Component } from 'vue'
 
 /**
  * id生成器
@@ -25,20 +26,20 @@ export const sleep = (delay: number) => {
  * @param importUrl 引入所有的组件 import.meta.glob('@/components/config/**')
  * @returns
  */
-// export const batchDynamicComponents = (name: string, importUrl: Record<string, Component>) => {
-//   const components = importUrl
-//   const componentMap = Object.assign(
-//     {},
-//     ...Object.keys(components).map((item) => {
-//       const name = item?.split('/')?.pop()?.replace('.vue', '') || ''
-//       return {
-//         [name]: components[item]
-//       }
-//     })
-//   )
-//   const importComponent = componentMap[name]
+export const batchDynamicComponents = (name: string, importUrl: Record<string, Component>) => {
+  const components = importUrl
+  const componentMap = Object.assign(
+    {},
+    ...Object.keys(components).map((item) => {
+      const name = item?.split('/')?.pop()?.replace('.vue', '') || ''
+      return {
+        [name]: components[item]
+      }
+    })
+  )
+  const importComponent = componentMap[name]
 
-//   if (!importComponent) return ''
+  if (!importComponent) return ''
 
-//   return markRaw(defineAsyncComponent(importComponent))
-// }
+  return markRaw(defineAsyncComponent(importComponent))
+}

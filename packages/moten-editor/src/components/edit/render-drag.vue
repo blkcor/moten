@@ -56,7 +56,7 @@
 import { computed, ref } from 'vue'
 import { useEditStore } from '@/stores/edit'
 import { nestedClass, move, findNodeById, replaceNodeId } from './nested'
-// import { COMPONENT_PREFIX } from '@/config'
+import { COMPONENT_PREFIX } from '@moten/ui'
 
 const edit = useEditStore()
 defineOptions({
@@ -84,7 +84,7 @@ defineProps({
 })
 
 const renderComponentCode = computed(() => (element: { code: string }) => {
-  return element.code
+  return COMPONENT_PREFIX + '-' + element.code
 })
 
 const activeClass = computed(() => (element: { id: string }) => {

@@ -1,8 +1,8 @@
 import { COMPONENT_PREFIX as COMPONENT_PREFIX_ } from './config/index'
 import '@/assets/style/index.scss'
 import './index.css'
-import imageSchema from '@/components/image/schema'
-import columnSchema from '@/components/column/schema'
+import imageSchema, { type MoImageSchema } from '@/components/image/schema'
+import columnSchema, { type MoColumnSchema } from '@/components/column/schema'
 
 import { schemaAllViewport as _schemaAllViewport } from '@/utils/components'
 import MoImage from '@/components/image'
@@ -12,6 +12,11 @@ import { App } from 'vue-demi'
 export const schema = {
   image: imageSchema,
   column: columnSchema
+}
+
+export type MoComponentSchema = {
+  image: MoImageSchema
+  column: MoColumnSchema
 }
 
 // components list

@@ -12,12 +12,32 @@
 
 <script setup lang="ts">
 import type { BaseBlock } from '@/types/edit'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { dragGroup } from './nested'
 import VIcon from '@/components/base/v-icon.vue'
 import EditRenderDrag from '@/components/edit/render-drag.vue'
+import { useEditStore } from '@/stores/edit'
 
 const list = ref<BaseBlock[]>([])
+const edit = useEditStore()
+
+watch(
+  () => list.value,
+  (val) => {
+    edit.setBlockConfig(val)
+  },
+  {
+    deep: true
+  }
+)
+
+watch(
+  () => edit.blockConfig,
+  (val) => {
+    list.value = val
+  },
+  { deep: true }
+)
 </script>
 
 <style lang="scss" scoped>

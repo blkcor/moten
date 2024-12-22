@@ -12,7 +12,7 @@
         <div class="title" v-if="edit.currentSelect">组件</div>
         <div class="title" v-else>页面</div>
         <edit-config-block v-if="edit.currentSelect" />
-        <edit-config-block v-else />
+        <edit-config-page v-else />
       </transition-group>
     </div>
   </div>
@@ -21,6 +21,8 @@
 <script setup lang="ts">
 import { useEditStore } from '@/stores/edit'
 import { watch } from 'vue'
+import EditConfigBlock from './config-block.vue'
+import EditConfigPage from './config-page.vue'
 
 const edit = useEditStore()
 

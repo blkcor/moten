@@ -1,4 +1,4 @@
-import type { BaseBlock } from '@/types/edit'
+import type { BaseBlock, Viewport } from '@/types/edit'
 import { nanoid } from '@/utils/index'
 import { cloneDeep, isEqual } from 'lodash'
 import deepmerge from 'deepmerge'

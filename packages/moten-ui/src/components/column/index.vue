@@ -1,6 +1,6 @@
 <template>
   <div :class="classes" :style="styles">
-    <div v-for="(item, index) in cols" :key="index" :style="itemStyle(item)">
+    <div v-for="(item, index) in cols" :key="index" :style="itemStyle(item)" class="item">
       <slot :item="getItem(index)" :index="index" />
     </div>
   </div>
@@ -17,11 +17,9 @@ export default defineComponent({
   setup(props) {
     const { data, viewport, children } = toRefs(props)
     // 获得子项
-    const getItem = computed(
-      () => (index: number) => children.value?.[viewport.value]?.[index] || []
-    )
+    const getItem = computed(() => (index: number) => children.value?.[index] || [])
     const classes = computed(() => [n()])
-    const cols = computed(() => data.value.cols?.[viewport.value] || '')
+    const cols = computed(() => data.value.cols?.[viewport.value] || [0.5, 0.5])
     const background = computed(() => data.value.background?.[viewport.value] || '')
     const styles = computed(() => {
       background: background.value
@@ -43,5 +41,10 @@ export default defineComponent({
 </script>
 <style scoped lang="scss">
 @include b('column') {
+  display: flex;
+  justify-content: center;
+  .item {
+    min-height: 240px;
+  }
 }
 </style>

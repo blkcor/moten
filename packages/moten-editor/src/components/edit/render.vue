@@ -12,8 +12,7 @@
 
 <script setup lang="ts">
 import type { BaseBlock } from '@/types/edit'
-import { computed, ref, watch } from 'vue'
-import { useEditStore } from '@/stores/edit'
+import { ref } from 'vue'
 import { dragGroup } from './nested'
 import VIcon from '@/components/base/v-icon.vue'
 import EditRenderDrag from '@/components/edit/render-drag.vue'

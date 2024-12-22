@@ -17,6 +17,9 @@ export type MoColumnPropsData = {
     mobile: string
   }
 }
+
+export type MoColumnPropsList = any[][]
+
 export const props = {
   data: {
     type: Object as PropType<MoColumnPropsData>,
@@ -42,10 +45,7 @@ export const props = {
    * children子项作为slot进行暴露
    */
   children: {
-    type: Object,
-    default: () => ({
-      desktop: [[], []],
-      mobile: [[], []]
-    })
+    type: Array as PropType<MoColumnPropsList>,
+    default: () => [[], []]
   }
 }

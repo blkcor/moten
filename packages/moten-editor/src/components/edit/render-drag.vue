@@ -12,6 +12,31 @@
     <template #item="{ element }">
       <div class="element">
         <div
+          v-if="element.nested && level < 2"
+          class="block-nested-render"
+          :class="activeClass(element)"
+          @click.stop="edit.setCurrentSelect(element)"
+        >
+          <component
+            :key="element.id"
+            :is="renderComponentCode(element)"
+            :data="element.formData"
+            :children="element.children"
+            :viewport="edit.viewport"
+          >
+            <template #default="{ item }">
+              <edit-render-drag
+                :list="item"
+                :group="group"
+                :level="level + 1"
+                class="nested-item"
+                :class="nestedClass"
+              />
+            </template>
+          </component>
+        </div>
+        <div
+          v-else
           class="block-render"
           :class="activeClass(element)"
           @click.stop="edit.setCurrentSelect(element)"
@@ -19,7 +44,6 @@
           <component
             :is="renderComponentCode(element)"
             :data="element.formData"
-            :children="element.children"
             :viewport="edit.viewport"
           />
         </div>

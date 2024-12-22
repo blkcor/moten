@@ -7,6 +7,7 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import type { Viewport } from '@/types/edit'
+
 type OptionProps = {
   value: Viewport
   label: string

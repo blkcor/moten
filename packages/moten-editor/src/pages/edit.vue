@@ -1,7 +1,7 @@
 <template>
   <div class="edit">
     <edit-header />
-    <div class="container">
+    <div class="container" :class="{ 'mobile-background': edit.isMobileViewport }">
       <edit-block />
       <edit-render />
       <edit-config />
@@ -14,6 +14,9 @@ import EditHeader from '../components/edit/header.vue'
 import EditBlock from '../components/edit/block.vue'
 import EditRender from '../components/edit/render.vue'
 import EditConfig from '../components/edit/config.vue'
+import { useEditStore } from '@/stores/edit'
+
+const edit = useEditStore()
 </script>
 
 <style lang="scss" scoped>

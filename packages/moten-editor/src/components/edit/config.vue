@@ -33,16 +33,8 @@ const panelSwitch = () => {
 watch(
   () => edit.currentSelect,
   (value) => {
-    if (value) {
+    if (value?.id) {
       edit.setConfigPanelShow(true)
-    }
-  }
-)
-watch(
-  () => edit.configPanelShow,
-  (value) => {
-    if (!value) {
-      edit.setCurrentSelect(null)
     }
   }
 )

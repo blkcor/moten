@@ -1,6 +1,6 @@
 <template>
   <!-- <div class="edit-render" :style="pageStyle" :class="pageClass"> -->
-  <div class="edit-render">
+  <div class="edit-render" :class="{ 'is-mobile': edit.isMobileViewport }">
     <edit-render-drag :list="list" :group="dragGroup" class="render" />
     <el-empty v-if="!list?.length" description="请从左侧拖动组件到此处">
       <template #image>
@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
 import type { BaseBlock } from '@/types/edit'
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { dragGroup } from './nested'
 import VIcon from '@/components/base/v-icon.vue'
 import EditRenderDrag from '@/components/edit/render-drag.vue'
@@ -49,6 +49,7 @@ watch(
   margin-left: var(--edit-block-width);
   margin-top: var(--edit-header-height);
   background: white;
+  transition: right 0.5s cubic-bezier(1, 0, 0.61, 1.01);
   &.is-mobile {
     width: 375px;
     overflow: hidden;
@@ -57,6 +58,7 @@ watch(
     margin-top: calc(var(--edit-header-height) + 20px);
     margin-bottom: 20px;
     transform: translateX(10px);
+    transition: right 0.5s cubic-bezier(1, 0, 0.61, 1.01);
   }
   .empty {
     position: absolute;

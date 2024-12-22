@@ -25,12 +25,22 @@
 
 <script setup lang="ts">
 import type { Viewport } from '@/types/edit'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import VIcon from '@/components/base/v-icon.vue'
 import VIconTooltip from '@/components/base/v-icon-tooltip.vue'
 import VSelect from '@/components/base/v-select.vue'
+import { useEditStore } from '@/stores/edit'
 
 const viewport = ref<Viewport>('desktop')
+const edit = useEditStore()
+
+watch(
+  () => viewport.value,
+  (value) => {
+    edit.setViewport(value)
+    edit.setConfigPanelShow(edit.isMobileViewport)
+  }
+)
 </script>
 
 <style scoped lang="scss">

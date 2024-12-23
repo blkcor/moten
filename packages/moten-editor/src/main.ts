@@ -16,7 +16,7 @@ app.use(pinia)
 
 app.use(router)
 
-app.use(moten)
+app.use<{ platform: 'editor' | 'user' }>(moten, { platform: 'editor' })
 
 app.component('Icon', Icon)
 app.component('draggable', draggable)

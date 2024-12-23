@@ -39,6 +39,7 @@ watch(
   (value) => {
     edit.setViewport(value)
     edit.setConfigPanelShow(edit.isMobileViewport)
+    edit.setCurrentSelect(null)
   }
 )
 </script>

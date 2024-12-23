@@ -21,7 +21,7 @@ import { findNodeById } from './nested'
 import deepmerge from 'deepmerge'
 import type { BaseBlock } from '@/types/edit'
 import { cloneDeep } from 'lodash'
-import { schemaAllViewport } from '@moten/ui'
+
 const edit = useEditStore()
 const list = ref<BaseBlock[]>([])
 
@@ -35,25 +35,25 @@ const callback = (params: { data: object; id: string }) => {
     array[index].formData = deepmerge(node.formData, data, { arrayMerge: overwriteMerge })
   })
   edit.setBlockConfig(newBlockConfig)
-  if (edit.currentSelect?.id === id) {
-    const currentSelect = cloneDeep(edit.currentSelect) as any
-    const overwriteMerge = (_destinationArray: any, sourceArray: any, _options: any) => sourceArray
-    currentSelect.formData = deepmerge(currentSelect.formData, data, { arrayMerge: overwriteMerge })
+  // if (edit.currentSelect?.id === id) {
+  //   const currentSelect = cloneDeep(edit.currentSelect) as any
+  //   const overwriteMerge = (_destinationArray: any, sourceArray: any, _options: any) => sourceArray
+  //   currentSelect.formData = deepmerge(currentSelect.formData, data, { arrayMerge: overwriteMerge })
 
-    if (edit.currentSelect.nested && edit.currentSelect.code === 'column') {
-      const cols = currentSelect.formData?.cols?.[edit.viewport] || [0.5, 0.5]
-      const oldCols = currentSelect.children || [[], []]
-      if (oldCols.length > cols.length) {
-        const count = oldCols.length - cols.length
-        currentSelect.children.splice(oldCols.length - count, count)
-      } else {
-        const count = cols.length - oldCols.length
-        const diff = Array.from({ length: count }, () => [])
-        currentSelect.children?.push(...diff)
-      }
-    }
-    edit.setCurrentSelect(currentSelect)
-  }
+  //   if (edit.currentSelect.nested && edit.currentSelect.code === 'column') {
+  //     const cols = currentSelect.formData?.cols?.[edit.viewport] || [0.5, 0.5]
+  //     const oldCols = currentSelect.children || [[], []]
+  //     if (oldCols.length > cols.length) {
+  //       const count = oldCols.length - cols.length
+  //       currentSelect.children.splice(oldCols.length - count, count)
+  //     } else {
+  //       const count = cols.length - oldCols.length
+  //       const diff = Array.from({ length: count }, () => [])
+  //       currentSelect.children?.push(...diff)
+  //     }
+  //   }
+  //   edit.setCurrentSelect(currentSelect)
+  // }
 }
 
 watch(
@@ -77,7 +77,8 @@ watch(
     list.value = [...Object.values(listResult)]
   },
   {
-    immediate: true
+    immediate: true,
+    deep: true
   }
 )
 </script>

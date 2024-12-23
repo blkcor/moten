@@ -1,7 +1,6 @@
 import type { BaseBlock, Viewport } from '@/types/edit'
 import { nanoid } from '@/utils/index'
 import { cloneDeep, isEqual } from 'lodash'
-import deepmerge from 'deepmerge'
 
 /**
  * column嵌套class
@@ -71,6 +70,7 @@ export interface FindNodeByIdCallBack {
 export const findNodeById = (
   arr: BaseBlock[],
   nodeId: string,
+  viewport: Viewport,
   callback: (params: FindNodeByIdCallBack) => void
 ) => {
   const array = cloneDeep(arr)
@@ -84,6 +84,18 @@ export const findNodeById = (
         node: element,
         index: i
       })
+      if (element.nested && element.code === 'column') {
+        const cols = element.formData?.cols?.[viewport] || [0.5, 0.5]
+        const oldCols = element.children || [[], []]
+        if (oldCols.length > cols.length) {
+          const count = oldCols.length - cols.length
+          element.children.splice(oldCols.length - count, count)
+        } else {
+          const count = cols.length - oldCols.length
+          const diff = Array.from({ length: count }, () => [])
+          element.children?.push(...diff)
+        }
+      }
       return array
     }
 
@@ -92,7 +104,7 @@ export const findNodeById = (
       for (let j = 0; j < element.children.length; j++) {
         const elementChildren = element.children[j]
         if (!elementChildren.length) continue
-        const newChildren = findNodeById(elementChildren, nodeId, callback)
+        const newChildren = findNodeById(elementChildren, nodeId, viewport, callback)
         if (!isEqual(newChildren, elementChildren)) {
           // 如果子节点数组有更新，则更新当前节点的子节点数组
           if (newChildren) element.children[j] = newChildren

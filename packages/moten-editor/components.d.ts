@@ -11,6 +11,7 @@ declare module 'vue' {
     BlockDrag: typeof import('./src/components/edit/block-drag.vue')['default']
     Config: typeof import('./src/components/edit/config.vue')['default']
     ConfigBlock: typeof import('./src/components/edit/config-block.vue')['default']
+    ConfigColumn: typeof import('./src/components/config/config-column.vue')['default']
     ConfigFiles: typeof import('./src/components/config/config-files.vue')['default']
     ConfigInput: typeof import('./src/components/config/config-input.vue')['default']
     ConfigPage: typeof import('./src/components/edit/config-page.vue')['default']

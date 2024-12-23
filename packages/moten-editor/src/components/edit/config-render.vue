@@ -25,7 +25,7 @@ const getComponent = (item: any) => {
   return batchDynamicComponents(code, import.meta.glob('@/components/config/**/*.vue'))
 }
 
-const props = defineProps({
+defineProps({
   list: {
     type: Array,
     default: () => []

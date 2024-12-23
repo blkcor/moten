@@ -20,6 +20,8 @@ import { type BlockSchemaKeys, blockSchema } from '@/config/schema'
 import { findNodeById } from './nested'
 import deepmerge from 'deepmerge'
 import type { BaseBlock } from '@/types/edit'
+import { cloneDeep } from 'lodash'
+import { schemaAllViewport } from '@moten/ui'
 const edit = useEditStore()
 const list = ref<BaseBlock[]>([])
 
@@ -27,15 +29,30 @@ const callback = (params: { data: object; id: string }) => {
   const { data, id } = params
   if (!id) return
   const blockConfig = edit.blockConfig || []
-  const newBlockConfig = findNodeById(blockConfig, id, (params: any) => {
+  const newBlockConfig = findNodeById(blockConfig, id, edit.viewport, (params: any) => {
     const { array, index, node } = params
     const overwriteMerge = (_destinationArray: any, sourceArray: any, _options: any) => sourceArray
     array[index].formData = deepmerge(node.formData, data, { arrayMerge: overwriteMerge })
   })
   edit.setBlockConfig(newBlockConfig)
   if (edit.currentSelect?.id === id) {
-    const fd = deepmerge.all([edit.currentSelect.formData || {}, data])
-    edit.setCurrentSelect({ ...edit.currentSelect, formData: fd })
+    const currentSelect = cloneDeep(edit.currentSelect) as any
+    const overwriteMerge = (_destinationArray: any, sourceArray: any, _options: any) => sourceArray
+    currentSelect.formData = deepmerge(currentSelect.formData, data, { arrayMerge: overwriteMerge })
+
+    if (edit.currentSelect.nested && edit.currentSelect.code === 'column') {
+      const cols = currentSelect.formData?.cols?.[edit.viewport] || [0.5, 0.5]
+      const oldCols = currentSelect.children || [[], []]
+      if (oldCols.length > cols.length) {
+        const count = oldCols.length - cols.length
+        currentSelect.children.splice(oldCols.length - count, count)
+      } else {
+        const count = cols.length - oldCols.length
+        const diff = Array.from({ length: count }, () => [])
+        currentSelect.children?.push(...diff)
+      }
+    }
+    edit.setCurrentSelect(currentSelect)
   }
 }
 
@@ -48,6 +65,7 @@ watch(
       list.value = []
       return
     }
+
     const { id, formData } = value as any
 
     const listResult = Object.fromEntries(

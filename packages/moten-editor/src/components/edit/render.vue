@@ -1,10 +1,9 @@
 <template>
-  <!-- <div class="edit-render" :style="pageStyle" :class="pageClass"> -->
   <div class="edit-render" :class="{ 'is-mobile': edit.isMobileViewport }">
     <edit-render-drag :list="list" :group="dragGroup" class="render" />
     <el-empty v-if="!list?.length" description="请从左侧拖动组件到此处">
       <template #image>
-        <v-icon icon="dragBlank"></v-icon>
+        <v-icon icon="dragBlank" />
       </template>
     </el-empty>
   </div>
@@ -72,6 +71,15 @@ watch(
     z-index: 1;
     width: 100%;
     height: 100%;
+  }
+  .el-empty {
+    position: absolute;
+    z-index: 0;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    pointer-events: none; // 防止遮挡拖拽
   }
 }
 </style>

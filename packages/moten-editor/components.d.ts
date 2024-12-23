@@ -32,6 +32,7 @@ declare module 'vue' {
     Header: typeof import('./src/components/edit/header.vue')['default']
     Render: typeof import('./src/components/edit/render.vue')['default']
     RenderDrag: typeof import('./src/components/edit/render-drag.vue')['default']
+    RenderHover: typeof import('./src/components/edit/render-hover.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     VIcon: typeof import('./src/components/base/v-icon.vue')['default']

@@ -1,14 +1,18 @@
 <template>
   <div class="edit-config-block">
-    <edit-config-render :list="list" @callback="callback">
-      <div v-if="!edit.currentSelect">
-        <el-empty description="请在左侧拖入组件后，点击选中组件">
-          <template #default>
-            <v-icon icon="dragBlank" class="icon" />
-          </template>
-        </el-empty>
-      </div>
-    </edit-config-render>
+    <edit-config-render
+      v-if="edit.currentSelect"
+      :list="list"
+      :schema="schema"
+      @callback="callback"
+    />
+    <div v-else>
+      <el-empty description="请在左侧拖入组件后，点击选中组件">
+        <template #default>
+          <v-icon icon="dragBlank" class="icon" />
+        </template>
+      </el-empty>
+    </div>
   </div>
 </template>
 
@@ -16,13 +20,14 @@
 import { useEditStore } from '@/stores/edit'
 import { ref, watch } from 'vue'
 import EditConfigRender from './config-render.vue'
-import { type BlockSchemaKeys, blockSchema } from '@/config/schema'
+import { type BlockSchemaKeys, blockSchema, type BlockSchema } from '@/config/schema'
 import { findNodeById } from './nested'
 import deepmerge from 'deepmerge'
 import type { BaseBlock } from '@/types/edit'
 
 const edit = useEditStore()
 const list = ref<BaseBlock[]>([])
+const schema = ref<BlockSchema[BlockSchemaKeys]>()
 
 const callback = (params: { data: object; id: string }) => {
   const { data, id } = params
@@ -66,6 +71,7 @@ watch(
     }
 
     const { id, formData } = value as any
+    schema.value = blockSchema[code]
 
     const listResult = Object.fromEntries(
       Object.entries(properties).map((childItem) => {

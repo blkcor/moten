@@ -25,7 +25,7 @@ const props = defineProps({
   }
 })
 
-const emits = defineEmits(['callback'])
+const emits = defineEmits(['callback', 'update'])
 
 const { data } = toRefs(props)
 const { formData, key, id } = data.value
@@ -65,6 +65,10 @@ const callback = (value: { desktop: boolean; mobile: boolean }) => {
       [key]: value
     },
     id
+  })
+
+  emits('update', {
+    [key]: value
   })
 }
 

@@ -1,10 +1,11 @@
 <template>
   <div class="config-files">
-    <el-form-item :label="title">
+    <el-form-item :label="title" :prop="key + '.' + viewport">
       <img v-if="src" :src="src" class="image" @click="fileClick" />
       <div v-else class="file" @click="fileClick">
         <v-icon icon="upload" class="icon" />
       </div>
+      <el-input v-model="src" style="display: none" />
     </el-form-item>
   </div>
 </template>
@@ -28,7 +29,7 @@ const props = defineProps({
   }
 })
 
-const emits = defineEmits(['callback'])
+const emits = defineEmits(['callback', 'update'])
 
 const { data } = toRefs(props)
 const { formData, key, id } = data.value
@@ -55,19 +56,29 @@ watch(
 )
 
 // TODO: 防抖
-watch(src, (value) => {
-  let data = {}
-  const _value = value || ''
+watch(
+  src,
+  (value) => {
+    let data = {}
+    const _value = value || ''
 
-  if (Object.values(formData || {}).length < 2) data = { desktop: _value, mobile: _value }
-  else data = { [props.viewport]: _value }
-  emits('callback', {
-    data: {
+    if (Object.values(formData || {}).length < 2) data = { desktop: _value, mobile: _value }
+    else data = { [props.viewport]: _value }
+    emits('callback', {
+      data: {
+        [key]: data
+      },
+      id
+    })
+
+    emits('update', {
       [key]: data
-    },
-    id
-  })
-})
+    })
+  },
+  {
+    immediate: true
+  }
+)
 </script>
 
 <style scoped lang="scss">

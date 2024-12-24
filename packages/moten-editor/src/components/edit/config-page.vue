@@ -1,6 +1,6 @@
 <template>
   <div class="edit-config-page">
-    <edit-config-render :list="list" @callback="callback" />
+    <edit-config-render v-if="edit.currentSelect" :list="list" @callback="callback" />
   </div>
 </template>
 

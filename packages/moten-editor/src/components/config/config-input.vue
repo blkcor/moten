@@ -1,6 +1,6 @@
 <template>
   <div class="config-input">
-    <el-form-item :label="title">
+    <el-form-item :label="title" :prop="key + '.' + viewport">
       <el-input :placeholder="placeholder" class="input" v-model="input"></el-input>
     </el-form-item>
   </div>
@@ -25,7 +25,7 @@ const props = defineProps({
   }
 })
 
-const emits = defineEmits(['callback'])
+const emits = defineEmits(['callback', 'update'])
 
 const { data } = toRefs(props)
 const { formData, key, id } = data.value
@@ -42,20 +42,30 @@ watch(
 )
 
 // TODO: 防抖
-watch(input, (value) => {
-  let data = {}
-  const _value = value || ''
+watch(
+  input,
+  (value) => {
+    let data = {}
+    const _value = value || ''
 
-  if (Object.values(formData || {}).length < 2) data = { desktop: _value, mobile: _value }
-  else data = { [props.viewport]: _value }
+    if (Object.values(formData || {}).length < 2) data = { desktop: _value, mobile: _value }
+    else data = { [props.viewport]: _value }
 
-  emits('callback', {
-    data: {
+    emits('callback', {
+      data: {
+        [key]: data
+      },
+      id
+    })
+
+    emits('update', {
       [key]: data
-    },
-    id
-  })
-})
+    })
+  },
+  {
+    immediate: true
+  }
+)
 </script>
 
 <style scoped lang="scss">

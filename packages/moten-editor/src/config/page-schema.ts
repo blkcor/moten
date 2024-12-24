@@ -9,17 +9,41 @@ const background = Type.String({
 const title = Type.String({
   code: 'config-input',
   title: '标题',
-  placeholder: '请输入页面标题'
+  placeholder: '请输入页面标题',
+  minLength: 1,
+  rules: [
+    {
+      required: true,
+      min: 1,
+      message: '请输入页面标题'
+    }
+  ]
 })
 const keywords = Type.String({
   code: 'config-input',
   title: '关键字',
-  placeholder: '请输入页面关键字'
+  placeholder: '请输入页面关键字',
+  minLength: 1,
+  rules: [
+    {
+      required: true,
+      min: 1,
+      message: '请输入页面关键字'
+    }
+  ]
 })
 const description = Type.String({
   code: 'config-input',
   title: '描述',
-  placeholder: '请输入页面描述'
+  placeholder: '请输入页面描述',
+  minLength: 1,
+  rules: [
+    {
+      required: true,
+      min: 1,
+      message: '请输入页面描述'
+    }
+  ]
 })
 
 const T = Type.Object({

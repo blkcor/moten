@@ -1,6 +1,6 @@
 <template>
   <div class="edit-config-page">
-    <edit-config-render v-if="edit.currentSelect" :list="list" @callback="callback" />
+    <edit-config-render :list="list" @callback="callback" :schema="schema" />
   </div>
 </template>
 
@@ -12,7 +12,7 @@ import { pageSchema, type PageSchemaFormData } from '@/config/schema'
 import deepmerge from 'deepmerge'
 
 const edit = useEditStore()
-
+const schema = ref(pageSchema)
 const properties = pageSchema.properties
 const list = ref<(typeof properties)[keyof typeof properties][]>([])
 
